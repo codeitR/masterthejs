@@ -1,7 +1,42 @@
-const btnElement = document.querySelector("button");
-const spanElement = document.querySelector("span");
+const newColorBtnElement = document.getElementById("new-color-button");
+const currentColorElement = document.getElementById("current-color");
 
-btnElement.addEventListener("click", () => {
-  const yourName = prompt("Please enter your name:");
-  spanElement.textContent = yourName;
+const hexValues = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+];
+
+function getRandomHexValue() {
+  const randomIndexPosition = Math.floor(Math.random() * hexValues.length);
+  const randomHexValue = hexValues[randomIndexPosition];
+  return randomHexValue;
+}
+
+function getRandomHexString(stringLength) {
+  let hexString = "#";
+  for (let i = 0; i < stringLength; i++) {
+    hexString += getRandomHexValue();
+  }
+  return hexString;
+}
+
+newColorBtnElement.addEventListener("click", () => {
+  const newColor = getRandomHexString(6);
+  document.body.style.setProperty("background-color", newColor);
+  newColorBtnElement.style.setProperty("background-color", newColor);
+  currentColorElement.textContent = newColor;
 });
