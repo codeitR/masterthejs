@@ -39,5 +39,11 @@ async function getWeatherData(cityValue) {
     weatherDataEl.querySelector(".details").innerHTML = details
       .map((detail) => `<div>${detail}</div>`)
       .join("");
-  } catch (error) {}
+  } catch (error) {
+    weatherDataEl.querySelector(".icon").innerHTML = "";
+    weatherDataEl.querySelector(".temperature").textContent = "";
+    weatherDataEl.querySelector(".description").textContent =
+      "This city doesnt exist, Please spell correctly !";
+    weatherDataEl.querySelector(".details").innerHTML = "";
+  }
 }
